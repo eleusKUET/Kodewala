@@ -36,7 +36,7 @@ bool millerRabin(long long n)
 		r++;
 	}
 	for (int a : {2, 3, 5, 7, 11, 13, 19, 23, 29, 31, 37}) {
-		if (n == a) return false;
+		if (n == a) return true;
 		if (check_composite(n, a, d, r)) return false;
 	}
 	return true;
