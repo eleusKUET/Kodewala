@@ -80,7 +80,34 @@ void prime_factorization(long long n)
 	prime_factorization(n / x);
 }
 
+void generate_divisor(vector<long long> primes, vector<long long> &divisors)
+{
+	sort(primes.begin(), primes.end());
+	vector<pair<long long, long long>> pfreq;
+	for (int i = 0, j; i < primes.size(); i = j) {
+		j = i;
+		while (j < primes.size() && primes[i] == primes[j]) j++;
+		pfreq.push_back({primes[i], j - i});
+	}
+	divisors.push_back(1);
+
+	for (auto [prime, count] : pfreq) {
+		long long result = 1;
+		vector<long long> temp;
+		for (int i = 1; i <= count; i++) {
+			result *= prime;
+			for (auto d : divisors) {
+				temp.push_back(d * result);
+			}
+		}
+		for (auto d : temp) {
+			divisors.push_back(d);
+		}
+	}
+	sort(divisors.begin(), divisors.end());
+}	
+
 signed main()
 {
-
+	
 }
