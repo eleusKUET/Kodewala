@@ -147,7 +147,7 @@ public:
 		auto right = query(v * 2 + 1, mid + 1, tr, max(l, mid + 1), r);
 		return {add(left.first, right.first, mod1), add(left.second, right.second, mod2)};
 	}
-	int get_hash(int l, int r) {
+	int get_hash(int l, int r, int n) {
 		auto ask = query(1, 1, n, l, r);
 		ask.first = mul(ask.first, ipw[0][l - 1], mod1);
 		ask.second = mul(ask.second, ipw[1][l - 1], mod2);
