@@ -150,7 +150,7 @@ public:
 	int get_hash(int l, int r) {
 		auto ask = query(1, 1, n, l, r);
 		ask.first = mul(ask.first, ipw[0][l - 1], mod1);
-		ask.second = mul(ask.second, ipw[1][n - r], mod2);
+		ask.second = mul(ask.second, ipw[1][l - 1], mod2);
 		return (ask.first << 32) | ask.second;
 	}
 };
