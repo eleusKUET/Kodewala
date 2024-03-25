@@ -17,23 +17,7 @@ int mark[buck * buck + 5];
 
 int getAns()
 {
-    int id = -1;
-    for (int i = 0; i < buck; i++) {
-        if (tab[i] == buck) continue;
-        id = i;
-        break;
-    }
-    assert(id != -1);
-    // debug(id);
-    // for (int i = 0; i < n; i++) {
-        // debug(i, mark[i]);
-    // }
-    for (int i = id * buck; i < (id + 1) * buck; i++) {
-        if (mark[i]) continue;
-        // debug(i);
-        return i;
-    }
-    assert(false);
+    
 }
 
 struct Query {
@@ -57,7 +41,6 @@ struct Update {
 
 inline void add(int id) {
     int prv = cnt[a[id]];
-    // debug(id, a[id], prv);
     if (prv) {
         mark[prv]--;
         if (mark[prv] == 0) tab[prv / buck]--;
@@ -166,7 +149,6 @@ int main(){
     int m;
     cin >> n >> m;
 
-    // vector<int> a(n + 1);
     unordered_map<int,int> compress;
     int now = 0;
 
@@ -175,7 +157,7 @@ int main(){
         if (compress[a[i]] == 0) compress[a[i]] = ++now;
         a[i] = compress[a[i]];
     }
-    // debug(a);
+
     int nu = 0;
     int nq = 0;
     for (int i = 0; i < m; i++) {
