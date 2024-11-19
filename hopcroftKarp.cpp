@@ -60,7 +60,7 @@ struct bipartite_matching {
             random_device rd;
             mt19937 mt(rd());
             for (int i = 0; i < n_left; ++i)
-                std::random_shuffle(std::begin(g[i]), std::end(g[i]), mt);
+                std::random_shuffle(std::begin(g[i]), std::end(g[i]), [&mt](int n) { return mt() % n; });
         }
         while (true) {
             bfs();
